@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Menu</title>
+
+<style>
+.toggle{
+    position: relative;
+    display:flex;
+    align-items:center;
+    justify-content: space-between; /* Text links, Kreis rechts */
+    gap:10px;
+    padding:6px 14px;
+    border-radius:30px;
+    border:none;
+    cursor:pointer;
+    font-weight:600;
+    color:white;
+    background: rgba(255,255,255,0.2);
+    transition: background 0.2s;
+    min-width:150px; /* sorgt dafür, dass Text immer sichtbar ist */
+}
+
+.toggle.active{
+    background: #1cc88a;
+    color:#fff;
+}
+
+.toggle-circle{
+    width:22px;
+    height:22px;
+    background:white;
+    border-radius:50%;
+    transition: transform 0.2s;
+    flex-shrink:0;
+}
+
+.toggle.active .toggle-circle{
+    transform: translateX(0); /* Kreis rechts, default aktiv */
+}
+
+/* Kreisposition: links wenn inaktiv */
+.toggle:not(.active) .toggle-circle{
+    transform: translateX(-calc(100% - 22px - 8px));
+}
+
+
+</style>
+</head>
+<body>
+<div class="toggle-group">
+    <button class="toggle active" id="physicalToggle">
+        <span id="physicalText"></span>
+        <div class="toggle-circle"></div>
+    </button>
+    <button class="toggle active" id="koopToggle">
+        <span id="koopText"></span>
+        <div class="toggle-circle"></div>
+    </button>
+</div>
+
+</body>
+</html>
