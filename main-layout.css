@@ -1,0 +1,194 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: linear-gradient(135deg, #4e73df, #1cc88a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.top-controls {
+    width: 360px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: white;
+    font-size: 14px;
+}
+
+/* Switch Style */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    background-color: #ccc;
+    border-radius: 24px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: .3s;
+}
+
+.slider:before {
+    content: "";
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: .3s;
+}
+
+input:checked + .slider {
+    background-color: #4e73df;
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+/* Language */
+.language-selector {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.flag-button {
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.language-menu {
+    display: none;
+    position: absolute;
+    top: 35px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    padding: 10px;
+    width: 160px;
+}
+
+.language-menu div {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.language-menu div:hover {
+    background: #f0f0f0;
+}
+.flag-svg {
+    width: 26px;
+    height: 18px;
+    border-radius: 3px;
+}
+
+
+
+.language-menu {
+    display: none;               /* bleibt versteckt bis Klick */
+    position: absolute;
+    top: 35px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    padding: 10px;
+    width: 160px;
+
+    display: flex;               /* alle Einträge untereinander */
+    flex-direction: column;      /* vertikal */
+    gap: 5px;                    /* Abstand zwischen Einträgen */
+}
+
+.language-menu div {
+    display: flex;               /* Flagge + Text nebeneinander */
+    align-items: center;         /* vertikal mittig */
+    gap: 10px;                   /* Abstand Flagge/Text */
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.language-menu div:hover {
+    background: #f0f0f0;
+}
+
+
+.app-container {
+    width: 360px;
+    background: #ffffff;
+    border-radius: 30px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+    padding: 25px 20px;
+}
+
+.menu-button {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    padding: 15px;
+    margin: 12px 0;
+    border: none;
+    border-radius: 18px;
+    background: #f8f9fc;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.menu-button:hover {
+    background: #e2e6f5;
+    transform: translateY(-2px);
+}
+
+.menu-button:active {
+    transform: scale(0.98);
+}
+
+.quick-option {
+    margin-bottom: 32px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    font-size: 19px;
+}
+
+.icon {
+    width: 26px;
+    height: 26px;
+    stroke: #4e73df;
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+span {
+    color: #333;
+}
+
+
