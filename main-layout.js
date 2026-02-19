@@ -93,10 +93,19 @@ if(koopToggle){
 const settingsBtn = document.getElementById("settingsBtn");
 if(settingsBtn){
     settingsBtn.onclick=()=>{
-        const dd=document.getElementById("settingsDropdown");
-        dd.style.display=dd.style.display==="flex"?"none":"flex";
-    };
+    document.getElementById("settingsDropdown")
+        .classList.toggle("open");
+};
+
 }
+document.addEventListener("click", function(e){
+    const dropdown = document.getElementById("settingsDropdown");
+    const button = document.getElementById("settingsBtn");
+
+    if(!dropdown.contains(e.target) && !button.contains(e.target)){
+        dropdown.classList.remove("open");
+    }
+});
 
 /* ================= LANGUAGE DROPDOWN ================= */
 const langBtn = document.getElementById("langBtn");
