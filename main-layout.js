@@ -1,17 +1,12 @@
+document.addEventListener("DOMContentLoaded", function(){
 
+let currentLang = "de";
 
 /* ================= TRANSLATIONS ================= */
 const translations = {
-  de:{Random:"Zufall",WestEast:"West-Ost",NorthSouth:"Nord-Süd",Population:"Bevölkerung",Area:"Fläche",Temperature:"Temperatur",Physical:"Digitale Version",Koop:"Koop-Modus"},
-  en:{Random:"Random",WestEast:"West-East",NorthSouth:"North-South",Population:"Population",Area:"Area",Temperature:"Temperature",Physical:"Digital Version",Koop:"Koop Mode"},
-  fr:{Random:"Aléatoire",WestEast:"Ouest-Est",NorthSouth:"Nord-Sud",Population:"Population",Area:"Superficie",Temperature:"Température",Physical:"Version numérique",Koop:"Mode coopératif"},
-  es:{Random:"Aleatorio",WestEast:"Oeste-Este",NorthSouth:"Norte-Sur",Population:"Población",Area:"Área",Temperature:"Temperatura",Physical:"Versión digital",Koop:"Modo cooperativo"},
-  cs:{Random:"Náhodné",WestEast:"Západ-Východ",NorthSouth:"Sever-Jih",Population:"Populace",Area:"Rozloha",Temperature:"Teplota",Physical:"Digitální verze",Koop:"Kooperativní režim"},
-  sq:{Random:"Rastësor",WestEast:"Perëndim-Lindje",NorthSouth:"Veri-Jug",Population:"Popullsia",Area:"Sipërfaqe",Temperature:"Temperatura",Physical:"Version digjitale",Koop:"Modalitet bashkëpunues"}
+de:{Random:"Zufall",WestEast:"West-Ost",NorthSouth:"Nord-Süd",Population:"Bevölkerung",Area:"Fläche",Temperature:"Temperatur",Physical:"Digitale Version",Koop:"Koop-Modus",Continent:"Region",World:"Welt",Europe:"Europa",NorthAmerica:"Nordamerika",SouthAmerica:"Südamerika",Africa:"Afrika",Asia:"Asien"},
+en:{Random:"Random",WestEast:"West-East",NorthSouth:"North-South",Population:"Population",Area:"Area",Temperature:"Temperature",Physical:"Digital Version",Koop:"Koop Mode",Continent:"Region",World:"World",Europe:"Europe",NorthAmerica:"North America",SouthAmerica:"South America",Africa:"Africa",Asia:"Asia"}
 };
-
-
-let currentLang="de";
 
 /* ================= FLAGS ================= */
 const flags={
@@ -32,11 +27,11 @@ Population:`<svg viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"
 Area:`<svg viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"><rect x="4" y="4" width="16" height="16"/></svg>`,
 Temperature:`<svg viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"><path d="M10 2v12a4 4 0 1 0 4 0V2"/><circle cx="12" cy="18" r="2"/></svg>`
 };
-
-/* ================= FUNCTIONS ================= */
-
+/* ================= BUILD MENU ================= */
 function buildMenu(){
     const menu=document.getElementById("menu");
+    if(!menu) return;
+
     menu.innerHTML="";
     Object.keys(icons).forEach((key,i)=>{
         const div=document.createElement("div");
@@ -47,50 +42,89 @@ function buildMenu(){
     });
 }
 
-function updateToggles(){
-    document.getElementById("physicalText").textContent = translations[currentLang].Physical;
-    document.getElementById("koopText").textContent = translations[currentLang].Koop;
+/* ================= UPDATE SETTINGS TEXT ================= */
+function updateSettingsTexts(){
+    const pt=document.getElementById("physicalText");
+    const kt=document.getElementById("koopText");
+    const ct=document.getElementById("continentTitle");
+
+    if(pt) pt.textContent = translations[currentLang].Physical;
+    if(kt) kt.textContent = translations[currentLang].Koop;
+    if(ct) ct.textContent = translations[currentLang].Continent;
+
+    document.querySelectorAll("[data-key]").forEach(el=>{
+        const key=el.getAttribute("data-key");
+        el.textContent = translations[currentLang][key];
+    });
 }
 
-
+/* ================= LANGUAGE MENU ================= */
 function buildLangMenu(){
     const dd=document.getElementById("langDropdown");
+    if(!dd) return;
+
     dd.innerHTML="";
     Object.keys(flags).forEach(code=>{
         const row=document.createElement("div");
-        row.innerHTML=flags[code]+code.toUpperCase();
+        row.innerHTML=flags[code]+` ${code.toUpperCase()}`;
         row.onclick=()=>{
             currentLang=code;
             document.getElementById("langBtn").innerHTML=flags[code];
             dd.style.display="none";
             buildMenu();
-            updateToggles();
+            updateSettingsTexts();
         };
         dd.appendChild(row);
     });
 }
 
-document.getElementById("langBtn").onclick=()=>{
-    const dd=document.getElementById("langDropdown");
-    dd.style.display=dd.style.display==="flex"?"none":"flex";
-};
-
-/* Toggle Klick */
+/* ================= TOGGLES ================= */
 const physicalToggle = document.getElementById("physicalToggle");
 const koopToggle = document.getElementById("koopToggle");
-physicalToggle.onclick = () => physicalToggle.classList.toggle("active");
-koopToggle.onclick = () => koopToggle.classList.toggle("active");
 
+if(physicalToggle){
+    physicalToggle.onclick = () => physicalToggle.classList.toggle("active");
+}
+if(koopToggle){
+    koopToggle.onclick = () => koopToggle.classList.toggle("active");
+}
+
+/* ================= SETTINGS DROPDOWN ================= */
+const settingsBtn = document.getElementById("settingsBtn");
+if(settingsBtn){
+    settingsBtn.onclick=()=>{
+        const dd=document.getElementById("settingsDropdown");
+        dd.style.display=dd.style.display==="flex"?"none":"flex";
+    };
+}
+
+/* ================= LANGUAGE DROPDOWN ================= */
+const langBtn = document.getElementById("langBtn");
+if(langBtn){
+    langBtn.onclick=()=>{
+        const dd=document.getElementById("langDropdown");
+        dd.style.display=dd.style.display==="flex"?"none":"flex";
+    };
+}
+
+/* ================= NAVIGATION ================= */
 function goToGame(key){
-    const physical=document.getElementById("physicalToggle").classList.contains("active");
-    const koop=document.getElementById("koopToggle").classList.contains("active");
-    const paramText=key.replace(/\s+/g,'').replace(/[^\w]/g,'');
-    const url=`game.html?lang=${currentLang}&mode=${paramText}&koop=${koop}&physical=${physical}`;
+    const physical = physicalToggle?.classList.contains("active") ?? false;
+    const koop = koopToggle?.classList.contains("active") ?? true;
+    const continent = document.querySelector('input[name="continent"]:checked')?.value ?? "World";
+
+    const paramText = key.replace(/\s+/g,'').replace(/[^\w]/g,'');
+
+    const url=`game.html?lang=${currentLang}&mode=${paramText}&koop=${koop}&physical=${physical}&continent=${continent}`;
     window.location.href=url;
 }
 
-/* INIT */
-document.getElementById("langBtn").innerHTML=flags[currentLang];
+/* ================= INIT ================= */
+if(document.getElementById("langBtn")){
+    document.getElementById("langBtn").innerHTML=flags[currentLang];
+}
 buildMenu();
 buildLangMenu();
-updateToggles();
+updateSettingsTexts();
+
+});
