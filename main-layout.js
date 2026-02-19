@@ -1,12 +1,147 @@
+/* ================= EventListener ================= */
+
 document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("click", function(e){
+
+    const settingsDropdown = document.getElementById("settingsDropdown");
+    const settingsBtn = document.getElementById("settingsBtn");
+
+    const langDropdown = document.getElementById("langDropdown");
+    const langBtn = document.getElementById("langBtn");
+
+    /* ================= SETTINGS ================= */
+    if(settingsDropdown && settingsBtn){
+        if(!settingsDropdown.contains(e.target) && 
+           !settingsBtn.contains(e.target)){
+            settingsDropdown.classList.remove("open");
+        }
+    }
+
+    /* ================= LANGUAGE ================= */
+    if(langDropdown && langBtn){
+        if(!langDropdown.contains(e.target) && 
+           !langBtn.contains(e.target)){
+            langDropdown.style.display = "none";
+        }
+    }
+
+});
 
 let currentLang = "de";
 
 /* ================= TRANSLATIONS ================= */
 const translations = {
-de:{Random:"Zufall",WestEast:"West-Ost",NorthSouth:"Nord-Süd",Population:"Bevölkerung",Area:"Fläche",Temperature:"Temperatur",Physical:"Digitale Version",Koop:"Koop-Modus",Continent:"Region",World:"Welt",Europe:"Europa",NorthAmerica:"Nordamerika",SouthAmerica:"Südamerika",Africa:"Afrika",Asia:"Asien"},
-en:{Random:"Random",WestEast:"West-East",NorthSouth:"North-South",Population:"Population",Area:"Area",Temperature:"Temperature",Physical:"Digital Version",Koop:"Koop Mode",Continent:"Region",World:"World",Europe:"Europe",NorthAmerica:"North America",SouthAmerica:"South America",Africa:"Africa",Asia:"Asia"}
+
+de:{
+Random:"Zufall",
+WestEast:"West-Ost",
+NorthSouth:"Nord-Süd",
+Population:"Bevölkerung",
+Area:"Fläche",
+Temperature:"Temperatur",
+Physical:"Digitale Version",
+Koop:"Koop-Modus",
+Continent:"Region",
+World:"Welt",
+Europe:"Europa",
+NorthAmerica:"Nordamerika",
+SouthAmerica:"Südamerika",
+Africa:"Afrika",
+Asia:"Asien"
+},
+
+en:{
+Random:"Random",
+WestEast:"West-East",
+NorthSouth:"North-South",
+Population:"Population",
+Area:"Area",
+Temperature:"Temperature",
+Physical:"Digital Version",
+Koop:"Coop Mode",
+Continent:"Region",
+World:"World",
+Europe:"Europe",
+NorthAmerica:"North America",
+SouthAmerica:"South America",
+Africa:"Africa",
+Asia:"Asia"
+},
+
+fr:{
+Random:"Aléatoire",
+WestEast:"Ouest-Est",
+NorthSouth:"Nord-Sud",
+Population:"Population",
+Area:"Superficie",
+Temperature:"Température",
+Physical:"Version numérique",
+Koop:"Mode coopératif",
+Continent:"Région",
+World:"Monde",
+Europe:"Europe",
+NorthAmerica:"Amérique du Nord",
+SouthAmerica:"Amérique du Sud",
+Africa:"Afrique",
+Asia:"Asie"
+},
+
+es:{
+Random:"Aleatorio",
+WestEast:"Oeste-Este",
+NorthSouth:"Norte-Sur",
+Population:"Población",
+Area:"Área",
+Temperature:"Temperatura",
+Physical:"Versión digital",
+Koop:"Modo cooperativo",
+Continent:"Región",
+World:"Mundo",
+Europe:"Europa",
+NorthAmerica:"Norteamérica",
+SouthAmerica:"Sudamérica",
+Africa:"África",
+Asia:"Asia"
+},
+
+cs:{
+Random:"Náhodné",
+WestEast:"Západ-Východ",
+NorthSouth:"Sever-Jih",
+Population:"Populace",
+Area:"Rozloha",
+Temperature:"Teplota",
+Physical:"Digitální verze",
+Koop:"Kooperativní režim",
+Continent:"Region",
+World:"Svět",
+Europe:"Evropa",
+NorthAmerica:"Severní Amerika",
+SouthAmerica:"Jižní Amerika",
+Africa:"Afrika",
+Asia:"Asie"
+},
+
+sq:{
+Random:"Rastësor",
+WestEast:"Perëndim-Lindje",
+NorthSouth:"Veri-Jug",
+Population:"Popullsia",
+Area:"Sipërfaqe",
+Temperature:"Temperatura",
+Physical:"Version digjitale",
+Koop:"Modalitet bashkëpunues",
+Continent:"Rajon",
+World:"Bota",
+Europe:"Evropa",
+NorthAmerica:"Amerika e Veriut",
+SouthAmerica:"Amerika e Jugut",
+Africa:"Afrika",
+Asia:"Azia"
+}
+
 };
+
 
 /* ================= FLAGS ================= */
 const flags={
@@ -98,14 +233,6 @@ if(settingsBtn){
 };
 
 }
-document.addEventListener("click", function(e){
-    const dropdown = document.getElementById("settingsDropdown");
-    const button = document.getElementById("settingsBtn");
-
-    if(!dropdown.contains(e.target) && !button.contains(e.target)){
-        dropdown.classList.remove("open");
-    }
-});
 
 /* ================= LANGUAGE DROPDOWN ================= */
 const langBtn = document.getElementById("langBtn");
