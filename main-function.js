@@ -47,7 +47,9 @@ Europe:"Europa",
 NorthAmerica:"Nordamerika",
 SouthAmerica:"Südamerika",
 Africa:"Afrika",
-Asia:"Asien"
+Asia:"Asien",
+GameIntro: "Ziehe drei Startkarten. Gib die Kartennummern hier ein.",
+Next: "Weiter"
 },
 
 en:{
@@ -65,7 +67,9 @@ Europe:"Europe",
 NorthAmerica:"North America",
 SouthAmerica:"South America",
 Africa:"Africa",
-Asia:"Asia"
+Asia:"Asia",
+GameIntro: "Draw three starting cards. Enter the card numbers here.",
+Next: "Next"
 },
 
 fr:{
@@ -83,7 +87,9 @@ Europe:"Europe",
 NorthAmerica:"Amérique du Nord",
 SouthAmerica:"Amérique du Sud",
 Africa:"Afrique",
-Asia:"Asie"
+Asia:"Asie",
+GameIntro: "Tirez trois cartes de départ. Entrez les numéros des cartes ici.",
+Next: "Suivant"
 },
 
 es:{
@@ -101,7 +107,9 @@ Europe:"Europa",
 NorthAmerica:"Norteamérica",
 SouthAmerica:"Sudamérica",
 Africa:"África",
-Asia:"Asia"
+Asia:"Asia",
+GameIntro: "Saca tres cartas iniciales. Introduce aquí los números de las cartas.",
+Next: "Siguiente"
 },
 
 cs:{
@@ -119,7 +127,9 @@ Europe:"Evropa",
 NorthAmerica:"Severní Amerika",
 SouthAmerica:"Jižní Amerika",
 Africa:"Afrika",
-Asia:"Asie"
+Asia:"Asie",
+GameIntro: "Vytáhni tři startovní karty. Zadej zde čísla karet.",
+Next: "Další"
 },
 
 sq:{
@@ -137,7 +147,9 @@ Europe:"Evropa",
 NorthAmerica:"Amerika e Veriut",
 SouthAmerica:"Amerika e Jugut",
 Africa:"Afrika",
-Asia:"Azia"
+Asia:"Azia",
+GameIntro: "Tërhiq tre karta fillestare. Shkruaj këtu numrat e kartave.",
+Next: "Tjetër"
 }
 
 };

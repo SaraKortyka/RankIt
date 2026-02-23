@@ -254,3 +254,53 @@ body{
     border-radius:4px;
     overflow:hidden;
 }
+/* Input Box */
+.input-card{
+    justify-content:center;
+}
+
+.card-input{
+    width:100%;
+    border:none;
+    font-size:18px;
+    text-align:center;
+    outline:none;
+}
+
+/* Plus Button */
+.plus-button{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    border:none;
+    background:white;
+    font-size:26px;
+	color:#000000;
+    cursor:pointer;
+    box-shadow:0 6px 18px rgba(0,0,0,0.15);
+    transition:0.2s;
+}
+
+.plus-button:hover{
+    background:#f1f5f9;
+}
+
+/* Next Button */
+.next-button{
+    justify-content:center;
+}
+/* ================= INFO CARD ================= */
+
+.info-card{
+    background: rgba(255,255,255,0.65);
+    box-shadow: none;
+    cursor: default;
+    justify-content: center;
+    text-align: center;
+	border-radius:10px;
+	margin-bottom:50px;
+}
+
+.info-card:hover{
+    background: rgba(255,255,255,0.85);
+}

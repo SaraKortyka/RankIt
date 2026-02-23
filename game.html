@@ -1,65 +1,60 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Game Menu</title>
-
-<style>
-.toggle{
-    position: relative;
-    display:flex;
-    align-items:center;
-    justify-content: space-between; /* Text links, Kreis rechts */
-    gap:10px;
-    padding:6px 14px;
-    border-radius:30px;
-    border:none;
-    cursor:pointer;
-    font-weight:600;
-    color:white;
-    background: rgba(255,255,255,0.2);
-    transition: background 0.2s;
-    min-width:150px; /* sorgt dafür, dass Text immer sichtbar ist */
-}
-
-.toggle.active{
-    background: #1cc88a;
-    color:#fff;
-}
-
-.toggle-circle{
-    width:22px;
-    height:22px;
-    background:white;
-    border-radius:50%;
-    transition: transform 0.2s;
-    flex-shrink:0;
-}
-
-.toggle.active .toggle-circle{
-    transform: translateX(0); /* Kreis rechts, default aktiv */
-}
-
-/* Kreisposition: links wenn inaktiv */
-.toggle:not(.active) .toggle-circle{
-    transform: translateX(-calc(100% - 22px - 8px));
-}
-
-
-</style>
+<title>Game</title>
+<link rel="stylesheet" href="main-layout.css">
 </head>
 <body>
-<div class="toggle-group">
-    <button class="toggle active" id="physicalToggle">
-        <span id="physicalText"></span>
-        <div class="toggle-circle"></div>
-    </button>
-    <button class="toggle active" id="koopToggle">
-        <span id="koopText"></span>
-        <div class="toggle-circle"></div>
-    </button>
+
+<div class="header">
+
+    <div></div>
+
+    <div class="lang-container">
+        <button class="lang-button" id="langBtn"></button>
+        <div class="dropdown" id="langDropdown"></div>
+    </div>
+
 </div>
+
+<div class="menu" style="display:flex; flex-direction:column; align-items:center;">
+
+    <!-- Intro Text -->
+   <div class="menu-item info-card">
+    <div class="menu-text" data-key="GameIntro"></div>
+	</div>
+
+    <!-- Input Boxes -->
+    <div class="menu-item input-card">
+        <input type="number" class="card-input">
+    </div>
+
+    <div class="menu-item input-card">
+        <input type="number" class="card-input">
+    </div>
+
+    <div class="menu-item input-card">
+        <input type="number" class="card-input">
+    </div>
+
+    <!-- Plus Button -->
+   <button class="plus-button" onclick="addInput()">+</button>
+
+    <!-- Abstand -->
+    <div style="height:50px;"></div>
+
+    <!-- Next Button -->
+    <div class="menu-item next-button" onclick="nextStep()">
+        <div class="menu-text" data-key="Next"></div>
+    </div>
+
+</div>
+
+<script src="translations.js"></script>
+<script src="main-function.js"></script>
+<script src="game.js"></script>
 
 </body>
 </html>
